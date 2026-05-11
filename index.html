@@ -3,11 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>euroco</title>
+
+  <title>Euroco | Handcrafted Pipe Cleaner Flowers</title>
+  <meta name="description" content="Euroco creates handcrafted pipe cleaner flowers, custom bouquets, and lasting floral gifts.">
 
   <style>
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -18,38 +24,83 @@
       line-height: 1.6;
     }
 
+    img {
+      max-width: 100%;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 24px;
+      background: rgba(255, 250, 242, 0.94);
+      border-bottom: 1px solid #eadfce;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-size: 24px;
+      color: #8f3f35;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #4f463d;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: #8f3f35;
+    }
+
     header {
-      min-height: 70vh;
-      padding: 80px 24px;
+      min-height: 72vh;
+      padding: 90px 24px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: linear-gradient(
-        rgba(255, 250, 242, 0.88),
-        rgba(255, 250, 242, 0.88)
-      ),
-      url("bouquet.jpg");
+      background:
+        linear-gradient(rgba(255, 250, 242, 0.82), rgba(255, 250, 242, 0.9)),
+        url("bouquet.jpg");
       background-size: cover;
       background-position: center;
     }
 
     .hero {
-      max-width: 720px;
+      max-width: 760px;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(56px, 12vw, 120px);
+      font-size: clamp(58px, 12vw, 118px);
       font-weight: 400;
-      letter-spacing: 0;
       color: #8f3f35;
     }
 
     .tagline {
-      margin: 16px 0 28px;
+      margin: 16px auto 28px;
+      max-width: 620px;
       font-size: 22px;
       color: #4f463d;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .button {
@@ -62,14 +113,21 @@
       font-size: 16px;
     }
 
+    .button.secondary {
+      background: transparent;
+      color: #8f3f35;
+      border: 1px solid #8f3f35;
+    }
+
     main {
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 64px 24px;
     }
 
     section {
-      margin-bottom: 72px;
+      margin-bottom: 78px;
+      scroll-margin-top: 90px;
     }
 
     h2 {
@@ -80,14 +138,54 @@
     }
 
     .section-intro {
-      max-width: 620px;
-      margin-bottom: 28px;
+      max-width: 680px;
+      margin: 0 0 30px;
+      color: #62584f;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .about-note {
+      padding: 28px;
+      border-left: 4px solid #d7a84f;
+      background: #f8efe1;
+      border-radius: 8px;
+      color: #4f463d;
+    }
+
+    .feature-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      padding: 22px;
+      background: #ffffff;
+      border: 1px solid #eadfce;
+      border-radius: 8px;
+    }
+
+    .feature h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      color: #8f3f35;
+      font-weight: 400;
+    }
+
+    .feature p {
+      margin: 0;
       color: #62584f;
     }
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 24px;
     }
 
@@ -96,115 +194,289 @@
       border: 1px solid #eadfce;
       border-radius: 8px;
       overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .flower-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(47, 42, 37, 0.12);
     }
 
     .flower-card img {
       width: 100%;
-      height: 420px;
+      height: 360px;
       display: block;
       object-fit: cover;
     }
 
-    .flower-card p {
+    .flower-info {
+      padding: 18px;
+    }
+
+    .flower-info h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+      font-weight: 400;
+      color: #315c45;
+    }
+
+    .flower-info p {
       margin: 0;
-      padding: 16px;
-      font-size: 18px;
-      color: #4f463d;
+      color: #62584f;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      counter-reset: steps;
+    }
+
+    .step {
+      padding: 22px;
+      background: #f3eadc;
+      border-radius: 8px;
+      counter-increment: steps;
+    }
+
+    .step::before {
+      content: counter(steps);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 14px;
+      border-radius: 50%;
+      background: #315c45;
+      color: #fffaf2;
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+      font-weight: 400;
+      color: #8f3f35;
+    }
+
+    .step p {
+      margin: 0;
+      color: #62584f;
     }
 
     .contact {
-      padding: 40px;
+      padding: 44px;
       border-radius: 8px;
-      background: #f3eadc;
+      background: #315c45;
       text-align: center;
+      color: #fffaf2;
+    }
+
+    .contact h2 {
+      color: #fffaf2;
     }
 
     .contact p {
-      margin: 0 0 20px;
-      color: #4f463d;
+      max-width: 680px;
+      margin: 0 auto 24px;
+      color: #f6eadb;
+    }
+
+    .contact .button {
+      background: #fffaf2;
+      color: #315c45;
     }
 
     footer {
-      padding: 24px;
+      padding: 26px;
       text-align: center;
       color: #7a6d60;
       font-size: 14px;
+      border-top: 1px solid #eadfce;
     }
 
-    @media (max-width: 700px) {
-      header {
-        min-height: 60vh;
-        padding: 64px 20px;
+    @media (max-width: 850px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
       }
 
-      .tagline {
-        font-size: 18px;
-      }
-
-      main {
-        padding: 48px 18px;
-      }
-
-      .gallery {
+      .about,
+      .feature-strip,
+      .gallery,
+      .steps {
         grid-template-columns: 1fr;
       }
 
       .flower-card img {
         height: 340px;
       }
+    }
+
+    @media (max-width: 520px) {
+      header {
+        min-height: 64vh;
+        padding: 72px 18px;
+      }
+
+      main {
+        padding: 48px 18px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      .tagline {
+        font-size: 18px;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
 
       .contact {
-        padding: 28px 20px;
+        padding: 30px 20px;
       }
     }
   </style>
 </head>
 
 <body>
+  <nav>
+    <a class="logo" href="#">Euroco</a>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#flowers">Flowers</a>
+      <a href="#orders">Orders</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
   <header>
     <div class="hero">
       <h1>Euroco</h1>
-      <p class="tagline">Handcrafted pipe cleaner flowers made to last.</p>
-      <a class="button" href="#flowers">View Flowers</a>
+      <p class="tagline">
+        Handcrafted pipe cleaner flowers made to last, gift, and brighten your space.
+      </p>
+
+      <div class="button-row">
+        <a class="button" href="#flowers">View Flowers</a>
+        <a class="button secondary" href="#contact">Custom Order</a>
+      </div>
     </div>
   </header>
 
   <main>
+    <section class="about" id="about">
+      <div>
+        <h2>About Euroco</h2>
+        <p class="section-intro">
+          Euroco creates soft, colourful pipe cleaner flowers by hand. Each bloom is carefully shaped into a lasting arrangement that can be kept as room decor, given as a gift, or made into a custom bouquet.
+        </p>
+      </div>
+
+      <div class="about-note">
+        Unlike fresh flowers, our handmade blooms do not wilt. Choose your colours, flower style, and bouquet size for something personal and long-lasting.
+      </div>
+    </section>
+
+    <section>
+      <div class="feature-strip">
+        <div class="feature">
+          <h3>Handmade</h3>
+          <p>Each flower is shaped and arranged by hand with care.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Custom Colours</h3>
+          <p>Pick colours that match your room, gift theme, or occasion.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Made To Last</h3>
+          <p>A keepsake bouquet that stays bright beyond the day it is gifted.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="flowers">
       <h2>Our Flowers</h2>
       <p class="section-intro">
-        Soft, colorful blooms handmade from pipe cleaners. Each piece is crafted to be kept, gifted, and enjoyed long after fresh flowers fade.
+        Browse a few of our handmade flower styles. More designs and colour combinations are available through custom orders.
       </p>
 
       <div class="gallery">
         <div class="flower-card">
           <img src="sunflower.jpg" alt="Sunflower pipe cleaner flower bouquet">
-          <p>Sunflower bouquet</p>
+          <div class="flower-info">
+            <h3>Sunflower Bouquet</h3>
+            <p>Bright handmade sunflowers for cheerful gifts and desk decor.</p>
+          </div>
         </div>
 
         <div class="flower-card">
           <img src="bouquet.jpg" alt="Pink flower bouquet">
-          <p>Pink flower bouquet</p>
+          <div class="flower-info">
+            <h3>Pink Bouquet</h3>
+            <p>A soft floral arrangement for birthdays, celebrations, and everyday joy.</p>
+          </div>
         </div>
 
         <div class="flower-card">
-          <img src="Rose.jpg" alt="Rose bouquet">
-          <p>Rose flower</p>
+          <img src="rose.jpg" alt="Rose pipe cleaner flower">
+          <div class="flower-info">
+            <h3>Rose Flower</h3>
+            <p>A classic handmade rose, available in your preferred colours.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="contact">
+    <section id="orders">
+      <h2>How To Order</h2>
+      <p class="section-intro">
+        Custom bouquets are arranged through Instagram so we can confirm your colours, style, and timing.
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <h3>Choose A Style</h3>
+          <p>Pick a flower, bouquet, or custom arrangement idea.</p>
+        </div>
+
+        <div class="step">
+          <h3>Message Us</h3>
+          <p>Send your preferred colours, occasion, and deadline.</p>
+        </div>
+
+        <div class="step">
+          <h3>Confirm Details</h3>
+          <p>We will confirm the design, price, and collection details.</p>
+        </div>
+
+        <div class="step">
+          <h3>Receive Blooms</h3>
+          <p>Enjoy flowers made by hand and designed to last.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
       <h2>Custom Orders</h2>
       <p>
-        Message us on Instagram to order, ask about available colours, or create a custom bouquet!!
+        Message us on Instagram to order, ask about available colours, or create a custom bouquet for someone special.
       </p>
-      <a class="button" href="https://www.instagram.com/bloomwith.euronco?igsh=eHBxN2tsZnZ3YTl4&utm_source=qr" target="_blank">Message on Instagram</a>
+
+      <a class="button" href="https://www.instagram.com/bloomwith.euronco?igsh=eHBxN2tsZnZ3YTl4&utm_source=qr" target="_blank">
+        Message on Instagram
+      </a>
     </section>
   </main>
 
   <footer>
-    <p>euroco &copy; 2026</p>
+    <p>Euroco &copy; 2026 | Handcrafted pipe cleaner flowers</p>
   </footer>
 </body>
 </html>
