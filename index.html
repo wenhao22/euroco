@@ -4,16 +4,202 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>euroco</title>
-</head>
-<body>
-  <h1>euroco</h1>
-  <p>Handcrafted pipe cleaner flowers made to last.</p>
-  <h2>Our Flowers</h2>
-  <p>Gallery coming soon.</p>
-  <img src="sunflower.jpg" alt="Sunflower pipe cleaner flower bouquet">
-  <img src="bouquet.jpg" alt="Pink flower bouquet">
 
-  <h2>Contact</h2>
-  <p>Message us on Instagram to order or ask about custom flowers.</p>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #2f2a25;
+      background: #fffaf2;
+      line-height: 1.6;
+    }
+
+    header {
+      min-height: 70vh;
+      padding: 80px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(
+        rgba(255, 250, 242, 0.88),
+        rgba(255, 250, 242, 0.88)
+      ),
+      url("bouquet.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero {
+      max-width: 720px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(56px, 12vw, 120px);
+      font-weight: 400;
+      letter-spacing: 0;
+      color: #8f3f35;
+    }
+
+    .tagline {
+      margin: 16px 0 28px;
+      font-size: 22px;
+      color: #4f463d;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: #8f3f35;
+      color: #fffaf2;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+
+    section {
+      margin-bottom: 72px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 34px;
+      font-weight: 400;
+      color: #315c45;
+    }
+
+    .section-intro {
+      max-width: 620px;
+      margin-bottom: 28px;
+      color: #62584f;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .flower-card {
+      background: #ffffff;
+      border: 1px solid #eadfce;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .flower-card img {
+      width: 100%;
+      height: 420px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .flower-card p {
+      margin: 0;
+      padding: 16px;
+      font-size: 18px;
+      color: #4f463d;
+    }
+
+    .contact {
+      padding: 40px;
+      border-radius: 8px;
+      background: #f3eadc;
+      text-align: center;
+    }
+
+    .contact p {
+      margin: 0 0 20px;
+      color: #4f463d;
+    }
+
+    footer {
+      padding: 24px;
+      text-align: center;
+      color: #7a6d60;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        min-height: 60vh;
+        padding: 64px 20px;
+      }
+
+      .tagline {
+        font-size: 18px;
+      }
+
+      main {
+        padding: 48px 18px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .flower-card img {
+        height: 340px;
+      }
+
+      .contact {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="hero">
+      <h1>euroco</h1>
+      <p class="tagline">Handcrafted pipe cleaner flowers made to last.</p>
+      <a class="button" href="#flowers">View Flowers</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="flowers">
+      <h2>Our Flowers</h2>
+      <p class="section-intro">
+        Soft, colorful blooms handmade from pipe cleaners. Each piece is crafted to be kept, gifted, and enjoyed long after fresh flowers fade.
+      </p>
+
+      <div class="gallery">
+        <div class="flower-card">
+          <img src="sunflower.jpg" alt="Sunflower pipe cleaner flower bouquet">
+          <p>Sunflower bouquet</p>
+        </div>
+
+        <div class="flower-card">
+          <img src="bouquet.jpg" alt="Pink flower bouquet">
+          <p>Pink flower bouquet</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Custom Orders</h2>
+      <p>
+        Message us on Instagram to order, ask about available colors, or create a custom bouquet.
+      </p>
+      <a class="button" href="https://www.instagram.com/" target="_blank">Message on Instagram</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>euroco &copy; 2026</p>
+  </footer>
 </body>
 </html>
