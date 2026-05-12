@@ -65,7 +65,7 @@
     }
 
     header {
-      min-height: 72vh;
+      min-height: 90vh;
       padding: 90px 24px;
       display: flex;
       align-items: center;
@@ -73,7 +73,7 @@
       text-align: center;
       background:
         linear-gradient(rgba(255, 250, 242, 0.82), rgba(255, 250, 242, 0.9)),
-        url("bouquet.jpg");
+        url("images/Euroco_Logo.jpg");
       background-size: cover;
       background-position: center;
     }
@@ -145,9 +145,8 @@
 
     .about {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 34px;
-      align-items: center;
+      grid-template-columns: 1fr;
+      gap: 24px;
     }
 
     .about-note {
@@ -156,6 +155,23 @@
       background: #f8efe1;
       border-radius: 8px;
       color: #4f463d;
+    }
+
+    .about-note strong,
+    .about-note span {
+      display: block;
+    }
+
+    .about-note strong {
+      margin-bottom: 8px;
+      color: #8f3f35;
+      font-size: 19px;
+    }
+
+    .about-notes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .feature-strip {
@@ -223,6 +239,168 @@
     .flower-info p {
       margin: 0;
       color: #62584f;
+    }
+
+    .calculator {
+      padding: 34px;
+      background: #ffffff;
+      border: 1px solid #eadfce;
+      border-radius: 8px;
+    }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .calculator-heading {
+      grid-column: 1 / -1;
+      margin: 0 0 6px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #eadfce;
+    }
+
+    .calculator-heading h3 {
+      margin: 0 0 6px;
+      color: #315c45;
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    .calculator-heading p {
+      margin: 0;
+      max-width: 680px;
+      color: #62584f;
+    }
+
+    .calculator-item {
+      padding: 20px;
+      background: #fffaf2;
+      border: 1px solid #eadfce;
+      border-radius: 8px;
+    }
+
+    .calculator-item h3 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      font-weight: 400;
+      color: #315c45;
+    }
+
+    .size {
+      margin: 0 0 8px;
+      color: #62584f;
+      font-size: 15px;
+    }
+
+    .price {
+      margin: 0 0 16px;
+      color: #8f3f35;
+    }
+
+    .quantity-control {
+      display: grid;
+      grid-template-columns: 42px 1fr 42px;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .quantity-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid #8f3f35;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #8f3f35;
+      cursor: pointer;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .quantity-btn:hover {
+      background: #8f3f35;
+      color: #fffaf2;
+    }
+
+    .quantity-input {
+      width: 100%;
+      height: 42px;
+      border: 1px solid #eadfce;
+      border-radius: 8px;
+      color: #2f2a25;
+      font: inherit;
+      text-align: center;
+    }
+
+    .calculator-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .calculator-actions button {
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .calculator-result {
+      min-height: 32px;
+      margin: 18px 0 0;
+      color: #315c45;
+      font-size: 22px;
+      white-space: pre-line;
+    }
+
+    .mystery-calculator {
+      margin-top: 28px;
+      margin-bottom: 34px;
+      padding: 34px;
+      background: #fbf8ff;
+      border: 2px solid #b9a7d8;
+      border-radius: 8px;
+    }
+
+    .mystery-heading {
+      margin: 0 0 6px;
+      color: #5a3f7a;
+      font-size: 26px;
+      font-weight: 400;
+    }
+
+    .mystery-intro {
+      max-width: 720px;
+      margin: 0 0 24px;
+      color: #62584f;
+    }
+
+    .mystery-calculator .calculator-item {
+      background: #ffffff;
+      border-color: #d7c9ef;
+    }
+
+    .mystery-calculator .quantity-btn {
+      border-color: #5a3f7a;
+      color: #5a3f7a;
+    }
+
+    .mystery-calculator .quantity-btn:hover,
+    .mystery-calculator .button {
+      background: #5a3f7a;
+      color: #fffaf2;
+    }
+
+    .mystery-calculator .button.secondary {
+      background: transparent;
+      color: #5a3f7a;
+      border: 1px solid #5a3f7a;
+    }
+
+    .mystery-calculator .calculator-result {
+      color: #5a3f7a;
     }
 
     .steps {
@@ -302,8 +480,10 @@
       }
 
       .about,
+      .about-notes,
       .feature-strip,
       .gallery,
+      .calculator-grid,
       .steps {
         grid-template-columns: 1fr;
       }
@@ -349,6 +529,7 @@
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#flowers">Flowers</a>
+      <a href="#calculator">Calculator</a>
       <a href="#orders">Orders</a>
       <a href="#contact">Contact</a>
     </div>
@@ -356,7 +537,7 @@
 
   <header>
     <div class="hero">
-      <h1>Euroco</h1>
+      <h1>EuRoCo</h1>
       <p class="tagline">
         Handcrafted pipe cleaner flowers made to last, gift, and brighten your space.
       </p>
@@ -371,36 +552,27 @@
   <main>
     <section class="about" id="about">
       <div>
-        <h2>About Euroco</h2>
+        <h2>About Us</h2>
         <p class="section-intro">
-          Euroco creates soft, colourful pipe cleaner flowers by hand. Each bloom is carefully shaped into a lasting arrangement that can be kept as room decor, given as a gift, or made into a custom bouquet.
+          Handcrafted bouquets created to celebrate love, joy, and life’s most meaningful moments — everlasting blooms designed to be cherished long beyond the occasion.
         </p>
       </div>
 
-      <div class="about-note">
-        Unlike fresh flowers, our handmade blooms do not wilt. Choose your colours, flower style, and bouquet size for something personal and long-lasting.
-      </div>
-    </section>
-
-    <section>
-      <div class="feature-strip">
-        <div class="feature">
-          <h3>Handmade</h3>
-          <p>Each flower is shaped and arranged by hand with care.</p>
+      <div class="about-notes">
+        <div class="about-note">
+          <strong>Euflorous</strong>
+          <span>Gentle florals thoughtfully crafted to bring warmth, happiness, and a touch of beauty into everyday moments.</span>
         </div>
-
-        <div class="feature">
-          <h3>Custom Colours</h3>
-          <p>Pick colours that match your room, gift theme, or occasion.</p>
+        <div class="about-note">
+          <strong>Romantic</strong>
+          <span>Delicate bouquets inspired by affection, tenderness, and the quiet magic of love.</span>
         </div>
-
-        <div class="feature">
-          <h3>Made To Last</h3>
-          <p>A keepsake bouquet that stays bright beyond the day it is gifted.</p>
+        <div class="about-note">
+          <strong>Commemorative</strong>
+          <span>Meaningful floral keepsakes made to honour memories, treasured milestones, and lasting connections.</span>
         </div>
       </div>
     </section>
-
     <section id="flowers">
       <h2>Our Flowers</h2>
       <p class="section-intro">
@@ -409,7 +581,7 @@
 
       <div class="gallery">
         <div class="flower-card">
-          <img src="sunflower.jpg" alt="Sunflower pipe cleaner flower bouquet">
+          <img src="images/sunflower.jpg" alt="Sunflower pipe cleaner flower bouquet">
           <div class="flower-info">
             <h3>Sunflower Bouquet</h3>
             <p>Bright handmade sunflowers for cheerful gifts and desk decor.</p>
@@ -417,7 +589,7 @@
         </div>
 
         <div class="flower-card">
-          <img src="bouquet.jpg" alt="Pink flower bouquet">
+          <img src="images/bouquet.jpg" alt="Pink flower bouquet">
           <div class="flower-info">
             <h3>Pink Bouquet</h3>
             <p>A soft floral arrangement for birthdays, celebrations, and everyday joy.</p>
@@ -425,12 +597,255 @@
         </div>
 
         <div class="flower-card">
-          <img src="rose.jpg" alt="Rose pipe cleaner flower">
+          <img src="images/rose.jpg" alt="Rose pipe cleaner flower">
           <div class="flower-info">
             <h3>Rose Flower</h3>
             <p>A classic handmade rose, available in your preferred colours.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="calculator">
+      <h2>Customise Your Own</h2>
+      <p class="section-intro">
+        Pick the flowers you want, choose the quantities, and calculate an estimated total before messaging us to confirm your custom order.
+      </p>
+
+      <p>
+      <div class="mystery-calculator">
+        <h3 class="mystery-heading">Mystery Bouquet Calculator</h3>
+        <p class="mystery-intro">
+          Choose a mystery bouquet size and calculate it separately from individual flowers.
+        </p>
+
+        <div class="calculator-grid">
+          <div class="calculator-item mystery-item" data-name="Small Mystery Bouquet" data-prices="1:30,2:55,3:80">
+            <h3>Small Mystery Bouquet</h3>
+            <p class="size">1 Main Big Stalk</p>
+            <p class="price">1: $30 | 2: $55 | 3: $80</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn mystery-quantity-btn" type="button" data-action="decrease" aria-label="Decrease small mystery bouquet quantity">-</button>
+              <input class="quantity-input mystery-quantity-input" type="number" min="0" max="3" value="0" aria-label="Small mystery bouquet quantity">
+              <button class="quantity-btn mystery-quantity-btn" type="button" data-action="increase" aria-label="Increase small mystery bouquet quantity">+</button>
+            </div>
+          </div>
+
+          <div class="calculator-item mystery-item" data-name="Medium Mystery Bouquet" data-prices="1:45,2:85,3:120">
+            <h3>Medium Mystery Bouquet</h3>
+            <p class="size">3 Main Big Stalks + 5 Main Small Stalks</p>
+            <p class="price">1: $45 | 2: $85 | 3: $120</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn mystery-quantity-btn" type="button" data-action="decrease" aria-label="Decrease medium mystery bouquet quantity">-</button>
+              <input class="quantity-input mystery-quantity-input" type="number" min="0" max="3" value="0" aria-label="Medium mystery bouquet quantity">
+              <button class="quantity-btn mystery-quantity-btn" type="button" data-action="increase" aria-label="Increase medium mystery bouquet quantity">+</button>
+            </div>
+          </div>
+
+          <div class="calculator-item mystery-item" data-name="Big Mystery Bouquet" data-prices="1:60,2:115,3:160">
+            <h3>Big Mystery Bouquet</h3>
+            <p class="size">5 Main Big Stalks + 8 Main Small Stalks</p>
+            <p class="price">1: $60 | 2: $115 | 3: $160</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn mystery-quantity-btn" type="button" data-action="decrease" aria-label="Decrease big mystery bouquet quantity">-</button>
+              <input class="quantity-input mystery-quantity-input" type="number" min="0" max="3" value="0" aria-label="Big mystery bouquet quantity">
+              <button class="quantity-btn mystery-quantity-btn" type="button" data-action="increase" aria-label="Increase big mystery bouquet quantity">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="calculator-actions">
+          <button class="button" type="button" id="calculateMysteryTotal">Calculate Mystery Bouquet</button>
+          <button class="button secondary" type="button" id="clearMysteryCalculator">Clear Mystery Bouquet</button>
+        </div>
+
+        <p class="calculator-result" id="mysteryCalculatorResult">Mystery bouquet total: $0</p>
+      </div>
+
+      <div class="calculator">
+        <div class="calculator-grid">
+          <div class="calculator-heading">
+            <h3>Customise Your Bouquet Calculator</h3>
+          </div>
+
+          <div class="calculator-item" data-name="Big Sunflower" data-tiers="1:16,2:14,3:12">
+            <h3>Sunflower</h3>
+            <p class="size">Big</p>
+            <p class="price">1: $16 each | 2: $14 each | 3+: $12 each</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn" type="button" data-action="decrease" aria-label="Decrease big sunflower quantity">-</button>
+              <input class="quantity-input" type="number" min="0" value="0" aria-label="Big sunflower quantity">
+              <button class="quantity-btn" type="button" data-action="increase" aria-label="Increase big sunflower quantity">+</button>
+            </div>
+          </div>
+
+          <div class="calculator-item" data-name="Small Sunflower" data-tiers="1:10,3:7,5:6">
+            <h3>Sunflower</h3>
+            <p class="size">Small</p>
+            <p class="price">1: $10 each | 3: $7 each | 5+: $6 each</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn" type="button" data-action="decrease" aria-label="Decrease small sunflower quantity">-</button>
+              <input class="quantity-input" type="number" min="0" value="0" aria-label="Small sunflower quantity">
+              <button class="quantity-btn" type="button" data-action="increase" aria-label="Increase small sunflower quantity">+</button>
+            </div>
+          </div>
+
+          <div class="calculator-item" data-name="Big Rose" data-tiers="1:12,2:11,3:10">
+            <h3>Rose</h3>
+            <p class="size">Big</p>
+            <p class="price">1: $12 each | 2: $11 each | 3+: $10 each</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn" type="button" data-action="decrease" aria-label="Decrease big rose quantity">-</button>
+              <input class="quantity-input" type="number" min="0" value="0" aria-label="Big rose quantity">
+              <button class="quantity-btn" type="button" data-action="increase" aria-label="Increase big rose quantity">+</button>
+            </div>
+          </div>
+
+          <div class="calculator-item" data-name="Small Rose" data-tiers="1:8,3:6,5:4">
+            <h3>Rose</h3>
+            <p class="size">Small</p>
+            <p class="price">1: $8 each | 3: $6 each | 5+: $4 each</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn" type="button" data-action="decrease" aria-label="Decrease small rose quantity">-</button>
+              <input class="quantity-input" type="number" min="0" value="0" aria-label="Small rose quantity">
+              <button class="quantity-btn" type="button" data-action="increase" aria-label="Increase small rose quantity">+</button>
+            </div>
+          </div>
+
+          <div class="calculator-item" data-name="Big Tulip" data-tiers="1:12,2:11,3:10">
+            <h3>Tulip</h3>
+            <p class="size">Big</p>
+            <p class="price">1: $12 each | 2: $11 each | 3+: $10 each</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn" type="button" data-action="decrease" aria-label="Decrease big tulip quantity">-</button>
+              <input class="quantity-input" type="number" min="0" value="0" aria-label="Big tulip quantity">
+              <button class="quantity-btn" type="button" data-action="increase" aria-label="Increase big tulip quantity">+</button>
+            </div>
+          </div>
+
+          <div class="calculator-item" data-name="Small Tulip" data-tiers="1:8,3:6,5:4">
+            <h3>Tulip</h3>
+            <p class="size">Small</p>
+            <p class="price">1: $8 each | 3: $6 each | 5+: $4 each</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn" type="button" data-action="decrease" aria-label="Decrease small tulip quantity">-</button>
+              <input class="quantity-input" type="number" min="0" value="0" aria-label="Small tulip quantity">
+              <button class="quantity-btn" type="button" data-action="increase" aria-label="Increase small tulip quantity">+</button>
+            </div>
+          </div>
+
+          <div class="calculator-item" data-name="Big Lily" data-tiers="1:10,2:9,3:8">
+            <h3>Lily</h3>
+            <p class="size">Big</p>
+            <p class="price">1: $10 each | 2: $9 each | 3+: $8 each</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn" type="button" data-action="decrease" aria-label="Decrease big lily quantity">-</button>
+              <input class="quantity-input" type="number" min="0" value="0" aria-label="Big lily quantity">
+              <button class="quantity-btn" type="button" data-action="increase" aria-label="Increase big lily quantity">+</button>
+            </div>
+          </div>
+
+          <div class="calculator-item" data-name="Small Lily" data-tiers="1:7,3:5,5:3">
+            <h3>Lily</h3>
+            <p class="size">Small</p>
+            <p class="price">1: $7 each | 3: $5 each | 5+: $3 each</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn" type="button" data-action="decrease" aria-label="Decrease small lily quantity">-</button>
+              <input class="quantity-input" type="number" min="0" value="0" aria-label="Small lily quantity">
+              <button class="quantity-btn" type="button" data-action="increase" aria-label="Increase small lily quantity">+</button>
+            </div>
+          </div>
+
+          <div class="calculator-item" data-name="Big Tiger Lily" data-tiers="1:12,2:11,3:10">
+            <h3>Tiger Lily</h3>
+            <p class="size">Big</p>
+            <p class="price">1: $12 each | 2: $11 each | 3+: $10 each</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn" type="button" data-action="decrease" aria-label="Decrease big tiger lily quantity">-</button>
+              <input class="quantity-input" type="number" min="0" value="0" aria-label="Big tiger lily quantity">
+              <button class="quantity-btn" type="button" data-action="increase" aria-label="Increase big tiger lily quantity">+</button>
+            </div>
+          </div>
+
+          <div class="calculator-item" data-name="Small Tiger Lily" data-tiers="1:8,3:6,5:4">
+            <h3>Tiger Lily</h3>
+            <p class="size">Small</p>
+            <p class="price">1: $8 each | 3: $6 each | 5+: $4 each</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn" type="button" data-action="decrease" aria-label="Decrease small tiger lily quantity">-</button>
+              <input class="quantity-input" type="number" min="0" value="0" aria-label="Small tiger lily quantity">
+              <button class="quantity-btn" type="button" data-action="increase" aria-label="Increase small tiger lily quantity">+</button>
+            </div>
+          </div>
+
+          <div class="calculator-item" data-name="Daisy" data-tiers="1:4,4:3,5:2">
+            <h3>Daisy</h3>
+            <p class="size">One size</p>
+            <p class="price">2: $4 each | 4: $3 each | 5+: $2 each</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn" type="button" data-action="decrease" aria-label="Decrease daisy quantity">-</button>
+              <input class="quantity-input" type="number" min="0" value="0" aria-label="Daisy quantity">
+              <button class="quantity-btn" type="button" data-action="increase" aria-label="Increase daisy quantity">+</button>
+            </div>
+          </div>
+
+          <div class="calculator-item" data-name="Lavender" data-tiers="1:3,4:2,5:1">
+            <h3>Lavender</h3>
+            <p class="size">One size</p>
+            <p class="price">2: $3 each | 4: $2 each | 5+: $1 each</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn" type="button" data-action="decrease" aria-label="Decrease lavender quantity">-</button>
+              <input class="quantity-input" type="number" min="0" value="0" aria-label="Lavender quantity">
+              <button class="quantity-btn" type="button" data-action="increase" aria-label="Increase lavender quantity">+</button>
+            </div>
+          </div>
+
+          <div class="calculator-item" data-name="Baby Breath" data-tiers="1:6,4:5,5:4">
+            <h3>Baby Breath</h3>
+            <p class="size">One size</p>
+            <p class="price">2: $6 each | 4: $5 each | 5+: $4 each</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn" type="button" data-action="decrease" aria-label="Decrease baby breath quantity">-</button>
+              <input class="quantity-input" type="number" min="0" value="0" aria-label="Baby breath quantity">
+              <button class="quantity-btn" type="button" data-action="increase" aria-label="Increase baby breath quantity">+</button>
+            </div>
+          </div>
+
+          <div class="calculator-item" data-name="Bell Flower" data-tiers="1:6,4:5,5:4">
+            <h3>Bell Flower</h3>
+            <p class="size">One size</p>
+            <p class="price">2: $6 each | 4: $5 each | 5+: $4 each</p>
+
+            <div class="quantity-control">
+              <button class="quantity-btn" type="button" data-action="decrease" aria-label="Decrease bell flower quantity">-</button>
+              <input class="quantity-input" type="number" min="0" value="0" aria-label="Bell flower quantity">
+              <button class="quantity-btn" type="button" data-action="increase" aria-label="Increase bell flower quantity">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="calculator-actions">
+          <button class="button" type="button" id="calculateTotal">Calculate</button>
+          <button class="button secondary" type="button" id="clearCalculator">Clear</button>
+        </div>
+
+        <p class="calculator-result" id="calculatorResult">Estimated total: $0</p>
       </div>
     </section>
 
@@ -478,5 +893,7 @@
   <footer>
     <p>Euroco &copy; 2026 | Handcrafted pipe cleaner flowers</p>
   </footer>
+
+  <script src="calculator.js"></script>
 </body>
 </html>
