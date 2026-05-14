@@ -1,15 +1,37 @@
+const CART_STORAGE_KEY = "eurocoCart";
+
 const calculatorItems = document.querySelectorAll(".calculator > .calculator-grid > .calculator-item");
 const calculateButton = document.getElementById("calculateTotal");
+const addCustomToCartButton = document.getElementById("addCustomToCart");
 const clearButton = document.getElementById("clearCalculator");
 const result = document.getElementById("calculatorResult");
 const mysteryItems = document.querySelectorAll(".mystery-item");
 const calculateMysteryButton = document.getElementById("calculateMysteryTotal");
+const addMysteryToCartButton = document.getElementById("addMysteryToCart");
 const clearMysteryButton = document.getElementById("clearMysteryCalculator");
 const mysteryResult = document.getElementById("mysteryCalculatorResult");
+const cartCount = document.getElementById("cartCount");
+
+function getStoredCart() {
+  return JSON.parse(localStorage.getItem(CART_STORAGE_KEY)) || [];
+}
+
+function saveCart(cart) {
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+}
+
+function updateCartCount() {
+  const cart = getStoredCart();
+  cartCount.textContent = cart.length;
+}
 
 function cleanQuantity(value) {
   const quantity = Number(value);
   return Number.isFinite(quantity) && quantity > 0 ? Math.floor(quantity) : 0;
+}
+
+function cleanMysteryQuantity(value) {
+  return Math.min(cleanQuantity(value), 3);
 }
 
 function getTiers(item) {
@@ -43,13 +65,10 @@ function getMysteryPrices(item) {
   }, {});
 }
 
-function cleanMysteryQuantity(value) {
-  return Math.min(cleanQuantity(value), 3);
-}
-
-function calculateTotal() {
+function getCustomBouquetSelection() {
   let total = 0;
-  const selectedFlowers = [];
+  const details = [];
+  const rows = [];
 
   calculatorItems.forEach((item) => {
     const input = item.querySelector(".quantity-input");
@@ -65,15 +84,97 @@ function calculateTotal() {
     const itemTotal = price * quantity;
 
     total += itemTotal;
-    selectedFlowers.push(`${item.dataset.name}: ${quantity} x $${price} = $${itemTotal}`);
+    details.push(`${item.dataset.name}: ${quantity} x $${price} = $${itemTotal}`);
+    rows.push({
+      description: item.dataset.name,
+      quantity,
+      price: `$${price}`,
+      subtotal: `$${itemTotal}`,
+    });
   });
 
-  if (selectedFlowers.length === 0) {
+  return {
+    title: "Custom Bouquet",
+    details,
+    rows,
+    total,
+  };
+}
+
+function getMysteryBouquetSelection() {
+  let total = 0;
+  const details = [];
+  const rows = [];
+
+  mysteryItems.forEach((item) => {
+    const input = item.querySelector(".mystery-quantity-input");
+    const quantity = cleanMysteryQuantity(input.value);
+
+    input.value = quantity;
+
+    if (quantity === 0) {
+      return;
+    }
+
+    const prices = getMysteryPrices(item);
+    const itemTotal = prices[quantity];
+
+    total += itemTotal;
+    details.push(`${item.dataset.name}: ${quantity} for $${itemTotal}`);
+    rows.push({
+      description: item.dataset.name,
+      quantity,
+      price: `$${itemTotal}`,
+      subtotal: `$${itemTotal}`,
+    });
+  });
+
+  return {
+    title: "Mystery Bouquet",
+    details,
+    rows,
+    total,
+  };
+}
+
+function updateCustomResult() {
+  const selection = getCustomBouquetSelection();
+
+  if (selection.details.length === 0) {
     result.textContent = "Estimated total: $0";
+    return selection;
+  }
+
+  result.textContent = `Estimated total: $${selection.total}\n${selection.details.join("\n")}`;
+  return selection;
+}
+
+function updateMysteryResult() {
+  const selection = getMysteryBouquetSelection();
+
+  if (selection.details.length === 0) {
+    mysteryResult.textContent = "Mystery bouquet total: $0";
+    return selection;
+  }
+
+  mysteryResult.textContent = `Mystery bouquet total: $${selection.total}\n${selection.details.join("\n")}`;
+  return selection;
+}
+
+function addSelectionToCart(selection) {
+  if (selection.details.length === 0) {
     return;
   }
 
-  result.textContent = `Estimated total: $${total}\n${selectedFlowers.join("\n")}`;
+  const cart = getStoredCart();
+
+  cart.push({
+    ...selection,
+    id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+  });
+
+  saveCart(cart);
+  updateCartCount();
 }
 
 document.querySelectorAll(".quantity-btn").forEach((button) => {
@@ -92,7 +193,11 @@ document.querySelectorAll(".quantity-btn").forEach((button) => {
   });
 });
 
-calculateButton.addEventListener("click", calculateTotal);
+calculateButton.addEventListener("click", updateCustomResult);
+
+addCustomToCartButton.addEventListener("click", () => {
+  addSelectionToCart(updateCustomResult());
+});
 
 clearButton.addEventListener("click", () => {
   calculatorItems.forEach((item) => {
@@ -102,33 +207,10 @@ clearButton.addEventListener("click", () => {
   result.textContent = "Estimated total: $0";
 });
 
-calculateMysteryButton.addEventListener("click", () => {
-  let total = 0;
-  const selectedBouquets = [];
+calculateMysteryButton.addEventListener("click", updateMysteryResult);
 
-  mysteryItems.forEach((item) => {
-    const input = item.querySelector(".mystery-quantity-input");
-    const quantity = cleanMysteryQuantity(input.value);
-
-    input.value = quantity;
-
-    if (quantity === 0) {
-      return;
-    }
-
-    const prices = getMysteryPrices(item);
-    const itemTotal = prices[quantity];
-
-    total += itemTotal;
-    selectedBouquets.push(`${item.dataset.name}: ${quantity} for $${itemTotal}`);
-  });
-
-  if (selectedBouquets.length === 0) {
-    mysteryResult.textContent = "Mystery bouquet total: $0";
-    return;
-  }
-
-  mysteryResult.textContent = `Mystery bouquet total: $${total}\n${selectedBouquets.join("\n")}`;
+addMysteryToCartButton.addEventListener("click", () => {
+  addSelectionToCart(updateMysteryResult());
 });
 
 clearMysteryButton.addEventListener("click", () => {
@@ -138,3 +220,5 @@ clearMysteryButton.addEventListener("click", () => {
 
   mysteryResult.textContent = "Mystery bouquet total: $0";
 });
+
+updateCartCount();
